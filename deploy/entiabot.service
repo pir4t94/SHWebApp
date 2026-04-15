@@ -1,0 +1,26 @@
+[Unit]
+Description=EntiaBot Smart Home Dashboard (Next.js)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust these for your Pi user and install path
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/entiabot
+EnvironmentFile=/home/pi/entiabot/.env.local
+ExecStart=/usr/bin/npm run start:prod
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

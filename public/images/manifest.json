@@ -1,0 +1,25 @@
+{
+    "name": "ENTIA SmartHome",
+    "short_name": "ENTIA",
+    "description": "Control your smart home devices",
+    "icons": [
+        {
+            "src": "/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "theme_color": "#0a0a0f",
+    "background_color": "#0a0a0f",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait"
+}

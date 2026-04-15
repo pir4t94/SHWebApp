@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #0a0a0f;
+  color: #e5e7eb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  min-height: 100%;
+}
+
+/* Subtle scanline overlay to match the cyberpunk vibe */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0.02) 0px,
+    rgba(0, 240, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 1;
+}
+
+@layer components {
+  .neon-border {
+    @apply border border-neon-border/60;
+  }
+
+  .neon-panel {
+    @apply bg-neon-panel/80 neon-border rounded-lg backdrop-blur-sm;
+  }
+
+  .section-label {
+    @apply text-xs tracking-[0.35em] uppercase mb-3 mt-6;
+  }
+
+  .btn-neon {
+    @apply inline-flex items-center justify-center px-4 py-2
+           font-mono uppercase tracking-widest text-sm
+           border border-neon-cyan/60 text-neon-cyan
+           hover:bg-neon-cyan/10 transition-colors rounded
+           shadow-neon;
+  }
+
+  .input-neon {
+    @apply w-full bg-transparent border border-neon-border px-3 py-2
+           text-neon-cyan placeholder:text-neon-dim
+           focus:outline-none focus:border-neon-cyan focus:shadow-neon
+           transition-colors rounded;
+  }
+}
