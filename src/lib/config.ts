@@ -51,4 +51,6 @@ export const config = {
   },
 } as const;
 
+
+
 export type AppConfig = typeof config;

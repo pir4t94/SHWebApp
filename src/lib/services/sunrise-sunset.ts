@@ -94,7 +94,10 @@ export class SunriseSunsetService {
         jobDate.setTime(jobDate.getTime() + config.sun.delaySunrise);
       }
 
+      console.log(`[jobs] scheduling job ${job.type} at ${jobDate.toString()}`);
+
       schedule.scheduleJob(jobDate, async () => {
+        console.log(`[jobs] running scheduled job ${job.type} at ${jobDate.toString()}`);
         if (entia.isConnected || (await entia.reconnect())) {
           await jobProcedure();
         }
