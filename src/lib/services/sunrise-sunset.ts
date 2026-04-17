@@ -48,6 +48,14 @@ export class SunriseSunsetService {
       const sunData = (await response.json()).results as { sunrise: string; sunset: string };
       this.sunriseDate = new Date(sunData.sunrise);
       this.sunsetDate = new Date(sunData.sunset);
+
+      if (config.sun.delaySunrise) {
+        this.sunriseDate.setTime(this.sunriseDate.getTime() + config.sun.delaySunrise)
+      }
+
+      if (config.sun.delaySunset) {
+        this.sunsetDate.setTime(this.sunsetDate.getTime() - config.sun.delaySunset)
+      }
     };
 
     await updateSunInfo(today);
@@ -85,14 +93,6 @@ export class SunriseSunsetService {
           }
         }
       };
-
-      if (job.type === "sunset" && config.sun.delaySunset) {
-        jobDate.setTime(jobDate.getTime() - config.sun.delaySunset);
-      }
-
-      if (job.type === "sunrise" && config.sun.delaySunrise) {
-        jobDate.setTime(jobDate.getTime() + config.sun.delaySunrise);
-      }
 
       console.log(`[jobs] scheduling job ${job.type} at ${jobDate.toString()}`);
 
